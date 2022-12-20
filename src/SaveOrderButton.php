@@ -20,9 +20,10 @@ class SaveOrderButton extends AbstractTool
         $model = $this->parent->model()->repository()->model();
         $class = get_class($model);
         $class = str_replace('\\', '\\\\', $class);
+        $buttonId = $this->parent->getTableId() . '-save-order-btn';
 
         $script = <<<JS
-$('.grid-save-order-btn').click(function () {
+$('#{$buttonId}').click(function () {
     $.ajax({
         method: 'POST',
         url: '{$route}',
@@ -51,9 +52,10 @@ JS;
         $this->script();
 
         $text = admin_trans_label('Save order');
+        $buttonId = $this->parent->getTableId() . '-save-order-btn';
 
         return <<<HTML
-<button type="button" class="btn btn-primary btn-custom grid-save-order-btn" style="margin-left:8px;display:none;">
+<button id="{$buttonId}" type="button" class="btn btn-primary btn-custom grid-save-order-btn" style="margin-left:8px;display:none;">
     <i class="fa fa-save"></i><span class="hidden-xs">&nbsp;&nbsp;{$text}</span>
 </button>
 HTML;

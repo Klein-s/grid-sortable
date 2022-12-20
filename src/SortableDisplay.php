@@ -24,7 +24,7 @@ new Sortable($("#{$id} tbody")[0], {
         tb.find('.grid-sortable-handle').each(function () {
             sorts.push($(this).data());
         });
-        tb.closest('.row').first().find('.grid-save-order-btn').data('sort', sorts).show();
+        tb.closest('.row, .dcat-box').first().find('.grid-save-order-btn').data('sort', sorts).show();
     },
 });
 JS;
