@@ -12,7 +12,7 @@ This plugin can help you sort by dragging the rows of the data list. The front e
 ## Installation
 
 ```shell
-composer require dcat-admin-extension/grid-sortable -vvv
+composer require klein-s/grid-sortable
 ```
 
 Then open `http://yourhost/admin/helpers/extensions` and click `Enable` and `Import` in turn.
@@ -36,6 +36,11 @@ class MyModel extends Model implements Sortable
         'order_column_name' =>'order_column',
         'sort_when_creating' => true,
     ];
+    
+    public function determineOrderColumnName()
+    {
+        return $this->sortable['order_column_name'];
+    }
 }
 ```
 
@@ -44,7 +49,7 @@ Use in the table
 ```php
 $grid = new Grid(new MyModel());
 
-$grid->sortable();
+$grid->sortable('order');
 ```
 
 ## Translation
@@ -70,7 +75,7 @@ return [
 ## 安装
 
 ```shell
-composer require dcat-admin-extension/grid-sortable -vvv
+composer require klein-s/grid-sortable
 ```
 
 然后打开`http://yourhost/admin/helpers/extensions`，依次点击`启用`和`导入`。
@@ -94,6 +99,11 @@ class MyModel extends Model implements Sortable
         'order_column_name' => 'order_column',
         'sort_when_creating' => true,
     ];
+    
+    public function determineOrderColumnName()
+    {
+        return $this->sortable['order_column_name'];
+    }
 }
 ```
 
@@ -102,7 +112,7 @@ class MyModel extends Model implements Sortable
 ```php
 $grid = new Grid(new MyModel());
 
-$grid->sortable();
+$grid->sortable('order');
 ```
 
 ## 翻译
